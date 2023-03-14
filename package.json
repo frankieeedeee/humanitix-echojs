@@ -1,0 +1,23 @@
+{
+  "name": "humanitix-echojs",
+  "version": "1.0.0",
+  "description": "This repository contains the hosted script file which is injected via the Humanitix Echo Google Tag Manager community template.",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frankieeedeee/humanitix-echojs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frankieeedeee/humanitix-echojs/issues"
+  },
+  "homepage": "https://github.com/frankieeedeee/humanitix-echojs#readme",
+  "devDependencies": {
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0"
+  }
+}
