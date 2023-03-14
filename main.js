@@ -1,9 +1,9 @@
 (function(w) {
     w.addEventListener('message', (event) => {
         const permittedDomains = [
-            'events.humanitix.com',
-            'events-staging.humanitix.net',
-            'events-experiments.humanitix.net'
+            'https://events.humanitix.com',
+            'https://events-staging.humanitix.net',
+            'https://events-experiments.humanitix.net'
         ];
 
         // Ensure we only respond to emitted events from known Humanitix pages
