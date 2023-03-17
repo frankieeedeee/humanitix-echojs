@@ -26,14 +26,26 @@
         const dataLayerIsAvailable = typeof window.dataLayer !== 'undefined';
         const metaPixelIsAvailable = typeof window.fbq !== 'undefined';
 
-        // Respond to Data Layer echo events
-        if (dataLayerIsAvailable && event.data.type === 'hx-datalayer-echo') {
-            dataLayer.push(event.data.contents);
-        }
-
         // Respond to Meta Pixel echo events
         if (metaPixelIsAvailable && event.data.type === 'hx-metapixel-echo') {
-            fbq(...event.data.contents);
+            window.fbq(...event.data.contents);
+        }
+
+        // Happy path if dataLayer is not available
+        if (!dataLayerIsAvailable) {
+            return;
+        }
+
+        // Parse the data layer data being echoed
+        const dlEcommerceEvent = event.data.contents.event;
+        const dlEcommerceData = event.data.contents.ecommerce;
+
+        if (dlEcommerceEvent && dlEcommerceData) {
+            window.dataLayer.push({
+                event: 'hx-echo',
+                hx_echo_event: dlEcommerceEvent,
+                ecommerce: dlEcommerceData
+            });
         }
     });
 })(window);

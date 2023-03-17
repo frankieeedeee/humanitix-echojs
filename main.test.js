@@ -23,14 +23,21 @@ test('it echos data layer events', async () => {
 
     const message = {
         type: 'hx-datalayer-echo',
-        contents: 'Example data layer contents'
+        contents: {
+            event: 'some-ecommerce-event',
+            ecommerce: 'some-ecommerce-data'
+        }
     };
 
     window.postMessage(message, '*');
 
     await new Promise(resolve => setTimeout(resolve, 100));
 
-    expect(window.dataLayer.push).toBeCalledWith('Example data layer contents');
+    expect(window.dataLayer.push).toBeCalledWith({
+        event: 'hx-echo',
+        hx_echo_event: 'some-ecommerce-event',
+        ecommerce: 'some-ecommerce-data'
+    });
 });
 
 test('it echos meta pixel events', async () => {
