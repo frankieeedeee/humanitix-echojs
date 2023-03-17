@@ -7,7 +7,7 @@ beforeEach(() => {
 
         const eventWithOrigin = new MessageEvent('message', {
             data: event.data,
-            origin: 'events.humanitix.com'
+            origin: 'https://events.humanitix.com'
         });
 
         window.dispatchEvent(eventWithOrigin);
