@@ -40,6 +40,7 @@
         const dlEcommerceEvent = event.data.contents.event;
         const dlEcommerceData = event.data.contents.ecommerce;
 
+        // If both event and data are available, push to the data layer
         if (dlEcommerceEvent && dlEcommerceData) {
             window.dataLayer.push({
                 event: 'hx-echo',
